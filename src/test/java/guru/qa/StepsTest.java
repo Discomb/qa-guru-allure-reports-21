@@ -59,9 +59,9 @@ public class StepsTest extends BaseTest {
 
         steps.openMainPage();
         steps.searchForRepo(REPOSITORY);
-        steps.takeScreenshot();
         steps.clickOnRepoLink(REPOSITORY);
         steps.openIssuesTab();
         steps.shouldSeeIssueWithText(ISSUE);
+        steps.takeScreenshot();
     }
 }

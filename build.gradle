@@ -25,9 +25,8 @@ allure {
 }
 
 dependencies {
-    testImplementation(platform('org.junit:junit-bom:5.10.0'))
     testImplementation(
-            'org.junit.jupiter:junit-jupiter',
+            'org.junit.jupiter:junit-jupiter:5.10.0',
             'com.codeborne:selenide:6.17.1',
             'io.qameta.allure:allure-selenide:2.23.0',
             'org.slf4j:slf4j-log4j12:2.0.7')
