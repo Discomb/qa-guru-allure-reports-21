@@ -1,12 +1,15 @@
 package guru.qa;
 
+import io.qameta.allure.Attachment;
 import io.qameta.allure.Step;
+import org.openqa.selenium.OutputType;
+import org.openqa.selenium.TakesScreenshot;
 
 import static com.codeborne.selenide.Condition.exist;
 import static com.codeborne.selenide.Configuration.baseUrl;
 import static com.codeborne.selenide.Selectors.withText;
-import static com.codeborne.selenide.Selenide.$;
-import static com.codeborne.selenide.Selenide.open;
+import static com.codeborne.selenide.Selenide.*;
+import static com.codeborne.selenide.WebDriverRunner.getWebDriver;
 import static org.openqa.selenium.By.linkText;
 
 public class WebSteps {
@@ -36,5 +39,11 @@ public class WebSteps {
     @Step("Проверяем наличие Issue с названием {issueText}")
     public void shouldSeeIssueWithText(String issueText) {
         $(withText(issueText)).should(exist);
+    }
+
+    @Attachment(value = "Screenshot", type = "image/png", fileExtension = "png")
+    public Object takeScreenshot() throws InterruptedException {
+        Thread.sleep(2500);
+        return ((TakesScreenshot) getWebDriver()).getScreenshotAs(OutputType.BYTES);
     }
 }

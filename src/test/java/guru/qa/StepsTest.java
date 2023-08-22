@@ -1,7 +1,9 @@
 package guru.qa;
 
 import com.codeborne.selenide.logevents.SelenideLogger;
+import io.qameta.allure.*;
 import io.qameta.allure.selenide.AllureSelenide;
+import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 
 import static com.codeborne.selenide.Condition.exist;
@@ -46,11 +48,18 @@ public class StepsTest extends BaseTest {
     }
 
     @Test
-    public void testAnnotatedStep() {
+    @Feature("Issue в репозитории")
+    @Story("Работа с Issue")
+    @Owner("nmalygin")
+    @Severity(SeverityLevel.NORMAL)
+    @DisplayName("Поиск Issue по названию")
+    public void testAnnotatedStep() throws InterruptedException {
+        SelenideLogger.addListener("allure", new AllureSelenide());
         WebSteps steps = new WebSteps();
 
         steps.openMainPage();
         steps.searchForRepo(REPOSITORY);
+        steps.takeScreenshot();
         steps.clickOnRepoLink(REPOSITORY);
         steps.openIssuesTab();
         steps.shouldSeeIssueWithText(ISSUE);
