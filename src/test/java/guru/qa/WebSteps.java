@@ -42,7 +42,7 @@ public class WebSteps {
     }
 
     @Attachment(value = "Screenshot", type = "image/png", fileExtension = "png")
-    public Object takeScreenshot() throws InterruptedException {
+    public byte[] takeScreenshot() throws InterruptedException {
         Thread.sleep(2500);
         return ((TakesScreenshot) getWebDriver()).getScreenshotAs(OutputType.BYTES);
     }
