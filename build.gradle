@@ -12,7 +12,7 @@ repositories {
 
 allure {
     report {
-        version.set('2.23.1')
+        version.set('2.11.2')
     }
     adapter {
         aspectjWeaver.set(true)
