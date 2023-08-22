@@ -44,4 +44,15 @@ public class StepsTest extends BaseTest {
             $(withText(ISSUE)).should(exist);
         });
     }
+
+    @Test
+    public void testAnnotatedStep() {
+        WebSteps steps = new WebSteps();
+
+        steps.openMainPage();
+        steps.searchForRepo(REPOSITORY);
+        steps.clickOnRepoLink(REPOSITORY);
+        steps.openIssuesTab();
+        steps.shouldSeeIssueWithText(ISSUE);
+    }
 }
